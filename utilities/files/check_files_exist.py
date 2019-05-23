@@ -23,9 +23,9 @@ def check_files_exist(filepath_list):
     ---------
     >>> from utilities.file_ops import check_files_exist
     >>> check_files_exist(["test_fasta.fa"])
-    FastaEntries(exists=True, missing=[]])
+    FilesExist(exists=True, missing=[]])
     >>> check_files_exist(["test_fasta.fa", "test.txt"])
-    FastaEntries(exists=False, missing=["test.txt"]])
+    FilesExist(exists=False, missing=["test.txt"]])
     """
 
     missing = []
