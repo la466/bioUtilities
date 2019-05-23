@@ -1,43 +1,38 @@
 from collections import namedtuple
 
-FastaEntries = namedtuple('FastaEntries', ('names', 'sequences'))
+FastaEntries = namedtuple('FastaEntries', ('ids', 'sequences'))
 
 def read_fasta(input_file):
     """
-    Read a .fa/.fasta file, returning
+    Read a .fa/.fasta file, returning the ids and sequences for each entry
 
     Parameters
     ---------
         input_file : str
-            path to the file that is to be read
-        delimiter : str, optional
-            delimiter of the file
+            Path to the file that is to be read
 
     Returns
     ---------
-        lines : list
-            list of lines containing the entries separated by the delimiter
-            specified
+        names : list
+            The list of fasta entry ids
+        sequences : list
+            The list of fasta entry sequences
 
     Examples
     ---------
-    >>> from file_ops import read_many_fields
-    >>> read_many_fields("test_file.csv", ",")
-    [[entry1, entry2, entry3],[entry4, entry5, entry6]]
+    >>> from utilities.file_ops import read_fasta
+    >>> read_fasta("test_fasta.fa")
+    FastaEntries(ids=['id1', 'id2'], sequences=['AAGCTACAG', 'AGCATCAG'])
     """
 
     file_to_read = open(input_file)
     input_lines = file_to_read.readlines()
     file_to_read.close()
     input_lines = [i.rstrip("\n") for i in input_lines]
-    names = [i.lstrip(">") for i in input_lines if i[0] == ">"]
+    ids = [i.lstrip(">") for i in input_lines if i[0] == ">"]
     sequences = [i for i in input_lines if i[0] != ">"]
-    if len(sequences) != len(names):
-        print("Problem extracting data from fasta file!")
-        print(len(sequences))
-        print(len(names))
-        raise Exception
+    if len(sequences) != len(ids):
+        raise Exception("\n\nERROR: Problem extracting sequences.\n{0} ids\n{1} sequences\n".format(len(ids), len(sequences)))
     if len(sequences) == 0:
-        print("No sequences were extracted!")
-        raise Exception
-    return(names, sequences)
+        raise Exception("\n\nERROR: No sequences could be extracted.\n")
+    return FastaEntries(ids, sequences)

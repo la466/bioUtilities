@@ -18,4 +18,4 @@ class TestGetExtension(unittest.TestCase):
 
     def test_get_extension_fail(self):
         filepath = "{0}/tests/data/test_file_tab_delimited.txt".format(MODULE_DIR)
-        self.assertRaises(AttributeError, get_extension, [filepath,[".jpg", ".bed"]])
+        self.assertRaises(AttributeError, get_extension, [filepath, [".jpg", ".bed"]])
