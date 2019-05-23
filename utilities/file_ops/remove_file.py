@@ -11,7 +11,7 @@ def remove_file(path):
 
     Examples
     ---------
-    >>> from file_ops import read_many_fields
+    >>> from utilities.file_ops import read_many_fields
     >>> remove_file("test_file.txt")
     """
 
