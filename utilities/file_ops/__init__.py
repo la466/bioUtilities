@@ -1,3 +1,4 @@
+from .check_files_exist import *
 from .get_extension import *
 from .read_fasta import *
 from .read_many_fields import *
