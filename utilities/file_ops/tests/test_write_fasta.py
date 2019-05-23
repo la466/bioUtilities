@@ -3,7 +3,7 @@ from utilities.tests import common_tests
 import unittest
 import os
 
-class TestRemoveFile(unittest.TestCase):
+class TestWriteFasta(unittest.TestCase):
 
     def test_write_fasta(self):
         filepath = "{0}/tests/data/test_write_fasta.fa".format(MODULE_DIR)

@@ -3,7 +3,7 @@ from utilities.tests import common_tests
 import unittest
 import os
 
-class TestGetExtension(unittest.TestCase):
+class TestReadFasta(unittest.TestCase):
 
     def test_read_fasta(self):
         filepath = "{0}/tests/data/test_file_fasta.fa".format(MODULE_DIR)

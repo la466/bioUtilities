@@ -3,7 +3,7 @@ from utilities.tests import common_tests
 import unittest
 import os
 
-class TestRemoveFile(unittest.TestCase):
+class TestCheckFileExists(unittest.TestCase):
 
     def test_check_files_exist(self):
         filepath = "{0}/tests/data/test_file_fasta.fa".format(MODULE_DIR)

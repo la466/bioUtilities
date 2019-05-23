@@ -1,5 +1,6 @@
 from .check_files_exist import *
 from .get_extension import *
+from .get_filepaths import *
 from .line_count import *
 from .read_fasta import *
 from .read_many_fields import *
