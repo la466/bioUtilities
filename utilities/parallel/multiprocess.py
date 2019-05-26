@@ -1,5 +1,5 @@
-import multiprocessing
 import os
+import multiprocessing
 
 def multiprocess(input_list, arguments, function_to_run, kwargs_dict = None, workers = None, onebyone = False):
     """
@@ -8,26 +8,26 @@ def multiprocess(input_list, arguments, function_to_run, kwargs_dict = None, wor
 
     Parameters
     ---------
-        input_list : list
-            A list of the things you want to iterate over in parallel (for
-            example, a list of gene names)
-        arguments : list
-            A list of arguments supplied to function_to_runtion. Put in "foo" in
-            place of the argument you are parallelizing over.
-        function_to_run : func
-            The function you want to parallellise
-        kwargs_dict : dict
-            A dictionary of any keyword arguments the function_to_runtion might take
-        workers : int
-            A user defined number of parallel processes to launch
-        onebyone : bool
-            If True, allocate one element from input_list to each process
+    input_list : list
+        A list of the things you want to iterate over in parallel (for
+        example, a list of gene names)
+    arguments : list
+        A list of arguments supplied to function_to_runtion. Put in "foo" in
+        place of the argument you are parallelizing over.
+    function_to_run : func
+        The function you want to parallellise
+    kwargs_dict : dict
+        A dictionary of any keyword arguments the function_to_runtion might take
+    workers : int
+        A user defined number of parallel processes to launch
+    onebyone : bool
+        If True, allocate one element from input_list to each process
 
 
     Returns
     ---------
-        results : variable
-            The results of the funcion to run
+    results : variable
+        The results of the funcion to run
 
     Examples
     ---------

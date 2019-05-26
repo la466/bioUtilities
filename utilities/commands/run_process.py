@@ -6,30 +6,29 @@ def run_process(arguments, return_string = True, input_to_pipe = None, return_er
 
     Parameters
     ---------
-        arguments : list
-            Arguments that you want to run
-        return_string : bool
-            Return the process output as a string
-        input_to_pipe : variable
-            If set, will use the output of another process as input to function
-        return_error : bool
-            If true, return the error
-        file_for_input : str
-            If set, the path to a file used for input
-        file_for_output : str
-            If set, the file used for output
-        universal_newlines : bool
-            If set, think of as text
-        shell : bool
-            If set, the command will be run through the shell
-
+    arguments : list
+        Arguments that you want to run
+    return_string : bool
+        Return the process output as a string
+    input_to_pipe : variable
+        If set, will use the output of another process as input to function
+    return_error : bool
+        If true, return the error
+    file_for_input : str
+        If set, the path to a file used for input
+    file_for_output : str
+        If set, the file used for output
+    universal_newlines : bool
+        If set, think of as text
+    shell : bool
+        If set, the command will be run through the shell
 
     Returns
     ---------
-        stderr : variable
-            The error message
-        stdout : variable
-            The output
+    stderr : variable
+        The error message
+    stdout : variable
+        The output
 
     Examples
     ---------

@@ -4,10 +4,10 @@ def write_fasta(input_dict, output_file):
 
     Parameters
     ---------
-        input_dict : dict
-            Dictionary containing ids and items to be written
-        output_file : str
-            Path to the output file
+    input_dict : dict
+        Dictionary containing ids and items to be written
+    output_file : str
+        Path to the output file
 
     Examples
     ---------

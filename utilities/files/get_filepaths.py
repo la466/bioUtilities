@@ -6,15 +6,15 @@ def get_filepaths(directory, return_hidden = False):
 
     Parameters
     ---------
-        directory : str
-            Path to the directory in question
-        return_hidden : bool
-            If True, return hidden files too
+    directory : str
+        Path to the directory in question
+    return_hidden : bool
+        If True, return hidden files too
 
     Returns
     ---------
-        filepaths : list
-            The paths of all files in the directory
+    filepaths : list
+        The paths of all files in the directory
 
     Examples
     ---------

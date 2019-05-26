@@ -8,15 +8,15 @@ def read_fasta(input_file):
 
     Parameters
     ---------
-        input_file : str
-            Path to the file that is to be read
+    input_file : str
+        Path to the file that is to be read
 
     Returns
     ---------
-        names : list
-            The list of fasta entry ids
-        sequences : list
-            The list of fasta entry sequences
+    names : list
+        The list of fasta entry ids
+    sequences : list
+        The list of fasta entry sequences
 
     Examples
     ---------

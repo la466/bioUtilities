@@ -7,13 +7,13 @@ def line_count(filepath):
 
     Parameters
     ---------
-        filepath : str
-            Path to the file
+    filepath : str
+        Path to the file
 
     Returns
     ---------
-        line_count : int
-            The number of lines in the file
+    line_count : int
+        The number of lines in the file
 
     Examples
     ---------

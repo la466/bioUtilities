@@ -9,15 +9,15 @@ def check_files_exist(filepath_list):
 
     Parameters
     ---------
-        filepath_list : list
-            List of files to check paths of
+    filepath_list : list
+        List of files to check paths of
 
     Returns
     ---------
-        exist : bool
-            True is all files exist
-        missing_files : list
-            A list of missing files
+    exist : bool
+        True is all files exist
+    missing_files : list
+        A list of missing files
 
     Examples
     ---------

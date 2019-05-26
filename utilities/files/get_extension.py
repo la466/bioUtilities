@@ -7,15 +7,15 @@ def get_extension(path, valid_list = None):
 
     Parameters
     ---------
-        path : str
-            path to the file being queried
-        valid_list : list, optional
-            list of valid extensions
+    path : str
+        path to the file being queried
+    valid_list : list, optional
+        list of valid extensions
 
     Returns
     ---------
-        extension : str
-            the file extension
+    extension : str
+        the file extension
 
     Examples
     ---------

@@ -1,4 +1,4 @@
-from utilities.parallel import multiprocess
+import utilities.parallel
 import os
 import multiprocessing
 import collections
@@ -10,32 +10,30 @@ def in_parallel(iteration_list, arguments, function_to_run, kwargs_dict = None, 
 
     Parameters
     ---------
-        iteration_list : list
-            The list of items to iterate over
-        arguments : list
-            A list of arguments to pass to the function
-        function_to_run : func
-            The function to run in parallel
-        kawrgs_dict : dict
-            A dictionary of keyword argument to pass to the function
-        parallel: bool
-            If true, run in parallel, else run linearly
-        workers : int
-            If set, use user defined number of processes
+    iteration_list : list
+        The list of items to iterate over
+    arguments : list
+        A list of arguments to pass to the function
+    function_to_run : func
+        The function to run in parallel
+    kawrgs_dict : dict
+        A dictionary of keyword argument to pass to the function
+    parallel: bool
+        If true, run in parallel, else run linearly
+    workers : int
+        If set, use user defined number of processes
 
 
     Returns
     ---------
-        outputs : variable
-            The output of the function_to_run
+    outputs : variable
+        The output of the function_to_run
 
     Examples
     ---------
     >>> from utilities.parallel import in_parallel
     >>> in_parallel(["gene1", "gene2", "gene3"], [{"gene1": "ATGACTAG", "gene2": "ATGCGCAATAG", "gene3": "ATGCCCTAA"}], calculate_gc_content)
     """
-
-    print(multiprocess)
 
     # run the simulations
     if parallel:
@@ -51,7 +49,7 @@ def in_parallel(iteration_list, arguments, function_to_run, kwargs_dict = None, 
         else:
             one_by_one = True
         # run process
-        processes = multiprocess(iteration_list, arguments, function_to_run, kwargs_dict = kwargs_dict, workers = workers, one_by_one = one_by_one)
+        processes = utilities.parallel.multiprocess(iteration_list, arguments, function_to_run, kwargs_dict = kwargs_dict, workers = workers, onebyone = one_by_one)
         # now process the results
         # first get the results
         results = []

@@ -6,16 +6,16 @@ def read_many_fields(input_file, delimiter):
 
     Parameters
     ---------
-        input_file : str
-            path to the file that is to be read
-        delimiter : str, optional
-            delimiter of the file
+    input_file : str
+        path to the file that is to be read
+    delimiter : str, optional
+        delimiter of the file
 
     Returns
     ---------
-        lines : list
-            list of lines containing the entries separated by the delimiter
-            specified
+    lines : list
+        list of lines containing the entries separated by the delimiter
+        specified
 
     Examples
     ---------

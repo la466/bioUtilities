@@ -6,8 +6,8 @@ def remove_file(path):
 
     Parameters
     ---------
-        path : str
-            path to the file that is to be removed
+    path : str
+        path to the file that is to be removed
 
     Examples
     ---------
