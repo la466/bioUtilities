@@ -1,7 +1,7 @@
 import os
 import multiprocessing
 
-def multiprocess(input_list, arguments, function_to_run, kwargs_dict = None, workers = None, onebyone = False):
+def multiprocess(input_list, arguments, function_to_run, kwargs_dict = None, workers = None, onebyone = False, main_function = None):
     """
     Take an input list, chunk up the list and then apply a function_to_runtion to each
     of the chunk in parallel.
@@ -52,12 +52,17 @@ def multiprocess(input_list, arguments, function_to_run, kwargs_dict = None, wor
     else:
         #each element in the input list will constitute a chunk of its own.
         chunk_list = input_list
+
+    kwargs_dict = {}
+    kwargs_dict["main_function"] = function_to_run
+
     pool = multiprocessing.Pool(workers)
     results = []
     #go over the chunks you made and laucnh a process for each
     for elem in chunk_list:
         current_arguments = arguments.copy()
         current_arguments[arg_to_parallelize] = elem
+
         if kwargs_dict:
             process = pool.apply_async(function_to_run, tuple(current_arguments), kwargs_dict)
         else:
