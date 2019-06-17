@@ -5,7 +5,7 @@ with open("README.txt", "r") as fh:
 
 setuptools.setup(
     name='bioUtilities',
-    version='0.1dev',
+    version='0.1.2dev',
     author = 'Liam Abrahams',
     author_email = 'la466@bath.ac.uk',
     url = 'https://github.com/la466/utilities',
