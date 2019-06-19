@@ -1,4 +1,4 @@
-from utilities.seq import get_dinucleotide_content
+from bioUtilities.seq import get_dinucleotide_content
 import unittest
 import numpy as np
 

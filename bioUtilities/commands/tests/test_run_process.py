@@ -1,5 +1,5 @@
-from utilities.commands import MODULE_DIR, run_process
-from utilities.file_ops import remove_file
+from bioUtilities.commands import MODULE_DIR, run_process
+from bioUtilities.file_ops import remove_file
 import unittest
 import os
 

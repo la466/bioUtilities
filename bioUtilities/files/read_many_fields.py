@@ -19,7 +19,7 @@ def read_many_fields(input_file, delimiter):
 
     Examples
     ---------
-    >>> from utilities.file_ops import read_many_fields
+    >>> from bioUtilities.file_ops import read_many_fields
     >>> read_many_fields("test_file.csv", ",")
     [[entry1, entry2, entry3],[entry4, entry5, entry6]]
     """

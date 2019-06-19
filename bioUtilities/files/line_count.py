@@ -1,4 +1,4 @@
-from utilities.commands import run_process
+from bioUtilities.commands import run_process
 import re
 
 def line_count(filepath):
@@ -17,7 +17,7 @@ def line_count(filepath):
 
     Examples
     ---------
-    >>> from utilities.file_ops import line_count
+    >>> from bioUtilities.file_ops import line_count
     >>> line_count("test_file.txt")
     3
     """

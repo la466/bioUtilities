@@ -19,7 +19,7 @@ def get_extension(path, valid_list = None):
 
     Examples
     ---------
-    >>> from utilities.file_ops import get_extension
+    >>> from bioUtilities.file_ops import get_extension
     >>> print(get_extension("test_file.csv"))
     .csv
     >>> print(get_extension("test_file.csv", valid_list = [".jpg", ".csv", ".txt"]))

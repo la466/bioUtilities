@@ -1,4 +1,4 @@
-from utilities.file_ops import MODULE_DIR, read_many_fields
+from bioUtilities.file_ops import MODULE_DIR, read_many_fields
 import unittest
 import os
 

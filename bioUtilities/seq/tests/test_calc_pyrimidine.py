@@ -1,4 +1,4 @@
-from utilities.seq import calc_gc
+from bioUtilities.seq import calc_gc
 import unittest
 
 class TestCalcPurine(unittest.TestCase):

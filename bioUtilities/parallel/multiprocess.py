@@ -31,7 +31,7 @@ def multiprocess(input_list, arguments, function_to_run, kwargs_dict = None, wor
 
     Examples
     ---------
-    >>> from utilities.parallel import multiprocess
+    >>> from bioUtilities.parallel import multiprocess
     >>> multiprocess(["gene1", "gene2", "gene3"], [{"gene1": "ATGACTAG", "gene2": "ATGCGCAATAG", "gene3": "ATGCCCTAA"}], calculate_gc_content)
 
     Credits

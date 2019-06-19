@@ -1,5 +1,5 @@
 from __future__ import print_function
-import utilities.parallel
+import bioUtilities.parallel
 import os
 import multiprocessing
 import collections
@@ -64,7 +64,7 @@ def in_parallel(function_to_run = None, args = None, iteration_list = None, rand
 
     Examples
     ---------
-    >>> from utilities.parallel import in_parallel
+    >>> from bioUtilities.parallel import in_parallel
     >>> in_parallel(["gene1", "gene2", "gene3"], [{"gene1": "ATGACTAG", "gene2": "ATGCGCAATAG", "gene3": "ATGCCCTAA"}], calculate_gc_content)
     """
 
@@ -143,7 +143,7 @@ def in_parallel(function_to_run = None, args = None, iteration_list = None, rand
 
 
 
-        # processes = utilities.parallel.multiprocess(iteration_list, arguments, local_in_parallel, main_function = function_to_run, kwargs_dict = kwargs_dict, workers = workers, onebyone = one_by_one)
+        # processes = bioUtilities.parallel.multiprocess(iteration_list, arguments, local_in_parallel, main_function = function_to_run, kwargs_dict = kwargs_dict, workers = workers, onebyone = one_by_one)
 
     #     for process in processes:
     #         print(process)

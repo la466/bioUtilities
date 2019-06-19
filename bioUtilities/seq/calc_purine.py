@@ -16,7 +16,7 @@ def calc_purine(sequence):
 
     Examples
     ---------
-    >>> from utilities.seq import calc_purine
+    >>> from bioUtilities.seq import calc_purine
     >>> calc_gc("ACATCGACTTGCTTA")
     0.4
     """

@@ -1,5 +1,5 @@
-from utilities.seq import calc_gc3
-from utilities.useful_sets import fourfolds
+from bioUtilities.seq import calc_gc3
+from bioUtilities.useful_sets import fourfolds
 import numpy as np
 import re
 
@@ -19,7 +19,7 @@ def calc_gc4(sequence):
 
     Examples
     ---------
-    >>> from utilities.seq import calc_gc4
+    >>> from bioUtilities.seq import calc_gc4
     >>> calc_gc4("ACATCGACTTGC")
     0.5
     """

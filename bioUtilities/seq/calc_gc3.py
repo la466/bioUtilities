@@ -16,7 +16,7 @@ def calc_gc3(sequence):
 
     Examples
     ---------
-    >>> from utilities.seq import calc_gc3
+    >>> from bioUtilities.seq import calc_gc3
     >>> calc_gc3("ACATCGACTTGC")
     0.5
     """

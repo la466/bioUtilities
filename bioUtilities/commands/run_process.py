@@ -32,7 +32,7 @@ def run_process(arguments, return_string = True, input_to_pipe = None, return_er
 
     Examples
     ---------
-    >>> from utilities.commands import run_process
+    >>> from bioUtilities.commands import run_process
     >>> run_process(["touch", "test_file.txt"])
 
     Credits

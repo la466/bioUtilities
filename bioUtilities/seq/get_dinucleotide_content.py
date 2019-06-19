@@ -20,7 +20,7 @@ def get_dinucleotide_content(sequence):
 
     Examples
     ---------
-    >>> from utilities.seq import get_dinucleotide_content
+    >>> from bioUtilities.seq import get_dinucleotide_content
     >>> get_dinucleotide_content("GACTGA")
     {'AC': 0.2, 'CT': 0.2, 'GA': 0.4, 'TG': 0.2}
     """

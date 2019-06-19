@@ -20,7 +20,7 @@ def read_fasta(input_file):
 
     Examples
     ---------
-    >>> from utilities.file_ops import read_fasta
+    >>> from bioUtilities.file_ops import read_fasta
     >>> read_fasta("test_fasta.fa")
     FastaEntries(ids=['id1', 'id2'], sequences=['AAGCTACAG', 'AGCATCAG'])
     """

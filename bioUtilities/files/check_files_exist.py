@@ -21,7 +21,7 @@ def check_files_exist(filepath_list):
 
     Examples
     ---------
-    >>> from utilities.file_ops import check_files_exist
+    >>> from bioUtilities.file_ops import check_files_exist
     >>> check_files_exist(["test_fasta.fa"])
     FilesExist(exists=True, missing=[]])
     >>> check_files_exist(["test_fasta.fa", "test.txt"])

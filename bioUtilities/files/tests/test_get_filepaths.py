@@ -1,4 +1,4 @@
-from utilities.file_ops import MODULE_DIR, get_filepaths
+from bioUtilities.file_ops import MODULE_DIR, get_filepaths
 import unittest
 import os
 

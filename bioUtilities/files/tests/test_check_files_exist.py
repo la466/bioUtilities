@@ -1,5 +1,5 @@
-from utilities.file_ops import MODULE_DIR, check_files_exist
-from utilities.tests import common_tests
+from bioUtilities.file_ops import MODULE_DIR, check_files_exist
+from bioUtilities.tests import common_tests
 import unittest
 import os
 

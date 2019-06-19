@@ -1,4 +1,4 @@
-from utilities.seq import calc_gc4
+from bioUtilities.seq import calc_gc4
 import unittest
 import numpy as np
 

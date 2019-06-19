@@ -16,7 +16,7 @@ def calc_pyrimidine(sequence):
 
     Examples
     ---------
-    >>> from utilities.seq import calc_pyrimidine
+    >>> from bioUtilities.seq import calc_pyrimidine
     >>> calc_gc("ACATCGACTTGCTTA")
     0.6
     """
