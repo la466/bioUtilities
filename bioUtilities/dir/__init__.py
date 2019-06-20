@@ -1,4 +1,5 @@
 from .create_directory import *
+from .remove_directory import *
 
 import os
 
