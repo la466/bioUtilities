@@ -18,7 +18,7 @@ def get_filepaths(directory, return_hidden = False):
 
     Examples
     ---------
-    >>> from bioUtilities.file_ops import get_filepaths
+    >>> from bioUtilities.files import get_filepaths
     >>> get_filepaths("./tests/test_directory")
     ['tests/test_directory/file1.txt', 'tests/test_directory/file2.txt']
     """

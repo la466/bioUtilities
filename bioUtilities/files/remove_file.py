@@ -11,7 +11,7 @@ def remove_file(path):
 
     Examples
     ---------
-    >>> from bioUtilities.file_ops import read_many_fields
+    >>> from bioUtilities.files import read_many_fields
     >>> remove_file("test_file.txt")
     """
 

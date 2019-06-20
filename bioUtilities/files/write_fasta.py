@@ -11,7 +11,7 @@ def write_fasta(input_dict, output_file):
 
     Examples
     ---------
-    >>> from bioUtilities.file_ops import write_fasta
+    >>> from bioUtilities.files import write_fasta
     >>> to_write = {"id1": "ATCACG", "id2": "ACATTGF"}
     >>> write_fasta(to_write, "output_file.fa")
     """

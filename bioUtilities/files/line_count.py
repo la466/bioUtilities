@@ -17,7 +17,7 @@ def line_count(filepath):
 
     Examples
     ---------
-    >>> from bioUtilities.file_ops import line_count
+    >>> from bioUtilities.files import line_count
     >>> line_count("test_file.txt")
     3
     """
