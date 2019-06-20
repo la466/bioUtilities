@@ -1,4 +1,4 @@
-from bioUtilities.file_ops import MODULE_DIR, remove_file, read_fasta, write_fasta
+from bioUtilities.files import MODULE_DIR, remove_file, read_fasta, write_fasta
 from bioUtilities.tests import common_tests
 import unittest
 import os

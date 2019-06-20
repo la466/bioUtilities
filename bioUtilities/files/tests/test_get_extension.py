@@ -1,4 +1,4 @@
-from bioUtilities.file_ops import MODULE_DIR, get_extension
+from bioUtilities.files import MODULE_DIR, get_extension
 import unittest
 import os
 

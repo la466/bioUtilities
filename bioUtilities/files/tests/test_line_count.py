@@ -1,4 +1,4 @@
-from bioUtilities.file_ops import MODULE_DIR, line_count
+from bioUtilities.files import MODULE_DIR, line_count
 import unittest
 import os
 

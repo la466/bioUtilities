@@ -1,4 +1,4 @@
-from bioUtilities.file_ops import MODULE_DIR, remove_file
+from bioUtilities.files import MODULE_DIR, remove_file
 import unittest
 import os
 
