@@ -1,3 +1,4 @@
+from .calc_dinucleotide import *
 from .calc_gc import *
 from .calc_gc3 import *
 from .calc_gc4 import *
