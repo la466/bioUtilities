@@ -1,7 +1,7 @@
 from bioUtilities.seq import calc_dinucleotide, calc_nucleotide
 import numpy as np
 
-def dinucleotide_matched(sequences, seed = None):
+def dinucleotide_matched(sequences, set_seed = True, seed = None):
     """
     Generate dinucleotide matched sequences given sequences
 
@@ -9,6 +9,11 @@ def dinucleotide_matched(sequences, seed = None):
     ---------
     sequences : str, list
         The sequence/sequences for generating matched sequences
+    set_seed : bool
+        Determine whether to set the seed in the function. Useful to set as
+        false if doing in parallel
+    seed : int
+        If set, the randomisation seed
 
     Returns
     ---------
@@ -25,7 +30,8 @@ def dinucleotide_matched(sequences, seed = None):
     """
 
     # set the randomisation seed
-    np.random.seed(seed)
+    if set_seed:
+        np.random.seed(seed)
 
     # if just one sequence, put in list for later
     if isinstance(sequences, str):
