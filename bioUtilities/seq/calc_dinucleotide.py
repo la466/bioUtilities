@@ -4,7 +4,7 @@ import re
 
 def calc_dinucleotide(sequences):
     """
-    Calculate the dinucleotide of a sequence or a list of sequences
+    Calculate the dinucleotide content of a sequence or a list of sequences
 
     Parameters
     ---------
