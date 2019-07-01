@@ -1,4 +1,5 @@
 from .mapq_filter import *
+from .nm_filter import *
 from .xt_filter import *
 
 import os
