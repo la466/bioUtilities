@@ -10,7 +10,7 @@ class TestXTFilter(unittest.TestCase):
         input_file = "{0}/tests/data/input.bam".format(MODULE_DIR)
         expected_file = "{0}/tests/data/expected_xt_filter.sam".format(MODULE_DIR)
         observed_file = "{0}/tests/data/observed_xt_filter.bam".format(MODULE_DIR)
-        xt_filter(input_file, "XT:A:U", observed_file)
+        xt_filter(input_file, observed_file, filter = "XT:A:U")
         #convert bam to sam to check correct output
         temp_observed = "{0}/tests/data/observed_xt_filter.sam".format(MODULE_DIR)
         samtools_args = ["samtools", "view", observed_file]
