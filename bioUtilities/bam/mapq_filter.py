@@ -30,7 +30,7 @@ def mapq_filter(input_file, output_file, lower_limit = None, upper_limit = None)
 
     #if neither thresholds are specified
     if not lower_limit and not upper_limit:
-        raise Exception("You must specify at least one of the lower_limit or upper_limit thresholds")
+        raise Exception("ERROR: You must specify at least one of the lower_limit or upper_limit thresholds.")
 
     samtools_args = ["samtools", "view", "-h"]
     # if both thresholds are specified, we want the reads with values between these
