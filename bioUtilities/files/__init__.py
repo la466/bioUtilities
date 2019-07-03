@@ -1,4 +1,5 @@
 from .check_files_exist import *
+from .fasta_from_bed import *
 from .get_extension import *
 from .get_filepaths import *
 from .line_count import *
