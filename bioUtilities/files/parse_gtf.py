@@ -1,7 +1,7 @@
 import bioUtilities.files
 import re
 
-def parse_gtf(input_file, features = [], protein_coding = None, gene_ids = None, transcript_ids = None, output_file = None):
+def parse_gtf(input_file, features = [], protein_coding = None, gene_ids = None, transcript_ids = None, include_chrs = None, exclude_chrs = None, output_file = None):
     """
     Read a gtf file, returning the parts of the file specified.
 
@@ -17,6 +17,10 @@ def parse_gtf(input_file, features = [], protein_coding = None, gene_ids = None,
         If set, retain only those entries with gene id in list
     transcript_ids : list
         If set, retain only those entries with transcript id in list
+    include_chrs : list
+        If set, a list of chromosomes to include
+    exclude_chrs : list
+        If set, a list of chromosomes to exclude
     output_file : str
         If set, write the features to an output file
 
@@ -67,6 +71,12 @@ def parse_gtf(input_file, features = [], protein_coding = None, gene_ids = None,
                 continue
             # wanting a protein coding gene, check if entry matches
             if protein_coding and gene_biotype != "protein_coding":
+                continue
+            # if chromosomes to include, check if chromosome is in those
+            if include_chrs and entry[0] not in include_chrs:
+                continue
+            # if chromosomes to exclude, check if chromosome is not in those
+            if exclude_chrs and entry[0] not in exclude_chrs:
                 continue
             # get the type of entry and check whether it exists in the features
             entry_type = entry[2]
