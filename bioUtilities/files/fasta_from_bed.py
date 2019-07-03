@@ -4,7 +4,7 @@ import random
 from bioUtilities.commands import run_process
 import bioUtilities.files
 
-def fasta_from_bed(bed_file, genome_fasta, output_file, force_strand = True, names = False):
+def fasta_from_bed(bed_file, genome_fasta, output_file, force_strand = True, names = False, write_strand = False):
     """
     Takes a bed file and creates a fasta file with the corresponding sequences.
 
@@ -22,6 +22,8 @@ def fasta_from_bed(bed_file, genome_fasta, output_file, force_strand = True, nam
     names : bool
         If set, use the “name” column in the bed file for the headers in the
         output file.
+    write_strand : bool
+        If true, keep the strand info
 
     Examples
     ---------
@@ -54,7 +56,7 @@ def fasta_from_bed(bed_file, genome_fasta, output_file, force_strand = True, nam
     run_process(args)
 
     entries = bioUtilities.files.read_fasta(temp_file)
-    ids = [i.split("(")[0] if names else i for i in entries.ids]
+    ids = [i.split("(")[0] if names and not write_strand else i for i in entries.ids]
     sequences = [i.upper() for i in entries.sequences]
     # write the entries to output file
     bioUtilities.files.write_fasta({id: sequences[i] for i, id in enumerate(ids)}, output_file)
