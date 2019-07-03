@@ -1,15 +1,15 @@
 import csv
 
-def read_many_fields(input_file, delimiter):
+def read_many_fields(input_file, delimiter = "\t"):
     """
     Read a csv/tsv/... into a list of lists with each sublist corresponding to one line.
 
     Parameters
     ---------
     input_file : str
-        path to the file that is to be read
-    delimiter : str, optional
-        delimiter of the file
+        Path to the file that is to be read
+    delimiter : str
+        If set, the delimiter of the file
 
     Returns
     ---------
@@ -25,9 +25,6 @@ def read_many_fields(input_file, delimiter):
     """
 
     file_to_read = open(input_file)
-    # default to tab if no delimiter is given
-    if not delimiter:
-        delimiter = "\t"
     try:
         field_reader = csv.reader(file_to_read, delimiter = delimiter)
         lines = []
