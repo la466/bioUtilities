@@ -73,7 +73,7 @@ def parse_gtf(input_file, features = [], protein_coding = None, gene_ids = None,
             if entry_type not in features:
                 continue
             # create the entry in bed format
-            output = [entry[0], str(int(entry[3])-1), entry[4], "{0}.{1}".format(transcript_id, exon_number), ".", entry[6], gene_id]
+            output = [entry[0], str(int(entry[3])-1), entry[4], "{0}.{1}".format(transcript_id, exon_number), ".", entry[6], gene_id, entry_type]
             outputs.append(output)
     # if wanting to write to an output file, do so
     if output_file:
