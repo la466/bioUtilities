@@ -19,7 +19,6 @@ def run_parallelisation(*args, **kwargs):
     pass_iteration = kwargs["pass_iteration"]
     del kwargs["pass_iteration"]
 
-
     outputs = []
     if len(chunk) != 0:
         if randomisation:
@@ -30,6 +29,7 @@ def run_parallelisation(*args, **kwargs):
             # if we want to pass the id of the iteration into the function
             if pass_iteration:
                 kwargs_local["iteration"] = item
+
             output = function_to_run(*args, **kwargs_local)
             outputs.append(output)
     return outputs
@@ -82,10 +82,7 @@ def in_parallel(function_to_run = None, args = None, iteration_list = None, rand
             workers = os.cpu_count() - 2
             # workers = 2
         # run the function
-        if parallel:
-            one_by_one = None
-        else:
-            one_by_one = True
+        one_by_one = False
 
         pool = multiprocessing.Pool(workers)
         print("{0} workers initiated.".format(workers))
@@ -98,6 +95,7 @@ def in_parallel(function_to_run = None, args = None, iteration_list = None, rand
         # run and chunk to the arguments
         # the run through the randomisastion parallel function and get the
         # outputs
+
         for chunk in chunk_list:
             if kwargs:
                 kwargs_local = kwargs.copy()
@@ -120,79 +118,6 @@ def in_parallel(function_to_run = None, args = None, iteration_list = None, rand
 
         pool.close()
         pool.join()
-        # pool.clear()
-
-        # results = results.get()
-        # print(results)
-        # results = [pool.apply_async(calculate, t) for t in TASKS]
-        # imap_it = pool.imap(calculatestar, TASKS)
-        # imap_unordered_it = pool.imap_unordered(calculatestar, TASKS)
-
-        # print 'Ordered results using pool.apply_async():'
-
-        # results_list = []
-        # for r in results:
-        #     if r.get():
-        #         results_list.append(r.get())
-        #
-        # if isinstance(results_list[0], dict):
-        #     flattened_outputs = {}
-        #     [flattened_outputs.update(i) for i in results_list]
-        #     outputs = flattened_outputs
-        # print(outputs)
-
-
-
-        # processes = bioUtilities.parallel.multiprocess(iteration_list, arguments, local_in_parallel, main_function = function_to_run, kwargs_dict = kwargs_dict, workers = workers, onebyone = one_by_one)
-
-    #     for process in processes:
-    #         print(process)
-    #
-    #     # now process the results
-    #     # first get the results
-    #     results = []
-    #     for process in processes:
-    #         results.append(process.get())
-    #     # now merge into one
-    #     # if you return a list from the function, combine the lists
-    #     if isinstance(results[0], list):
-    #         flattened_outputs = []
-    #         [flattened_outputs.extend(i) for i in results]
-    #         outputs = flattened_outputs
-    #     # if you return a dictionary
-    #     elif isinstance(results[0], dict):
-    #         # get the keys
-    #         keys = list(results[0].keys())
-    #         # if keys exist
-    #         if len(keys):
-    #             # if the results have repeated keys, append each keys result to a list to merge all results
-    #             # for one key to the same list
-    #             if isinstance(results[0][keys[0]], list):
-    #                 flattened_outputs = collections.defaultdict(lambda: [])
-    #                 for result in results:
-    #                     for key in result:
-    #                         flattened_outputs[key].extend(result[key])
-    #                 #unpickle
-    #                 outputs = {i: flattened_outputs[i] for i in flattened_outputs}
-    #             # otherwise, just add to one dictionary
-    #             else:
-    #                 flattened_outputs = {}
-    #                 [flattened_outputs.update(i) for i in results]
-    #                 outputs = flattened_outputs
-    #         else:
-    #             outputs = None
-    #     else:
-    #         outputs = None
-    # else:
-    #     if kwargs_dict:
-    #         # use keyword args
-    #         outputs = function_to_run(simulations, *arguments, **kwargs_dict)
-    #     else:
-    #         # no keyword args
-    #         outputs = function_to_run(simulations, *arguments)
-    # # return the outputs
-    # return outputs
-
 
 def local_in_parallel(iteration_list, *args, main_function = None, random_seed = None):
     output = []
@@ -203,13 +128,3 @@ def local_in_parallel(iteration_list, *args, main_function = None, random_seed =
             main_function(args)
 
     return output
-    # print(kawrgs_dict)
-    # print(main_function)
-    #
-    # for i, iteration in enumerate(iteration_list):
-    #     local_output = main_function(args)
-    #     local_output = kwargs_dict["function_to_run"](args)
-    #     print(iteration_list)
-    #     print(args)
-    #     print(kwargs_dict)
-    # print(function_to_run)
