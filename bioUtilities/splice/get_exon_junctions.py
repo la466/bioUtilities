@@ -83,12 +83,23 @@ def get_exon_junctions(input_bed, output_file, all_exons_file = None):
                         except:
                             pass
 
+    junctions = collections.defaultdict(lambda: collections.defaultdict(lambda: collections.defaultdict()))
+    for chr in retained:
+        for transcript_id in retained[chr]:
+            for exon_junction in retained[chr][transcript_id]:
+                exon1 = int(exon_junction.split("-")[0])
+                exon2 = int(exon_junction.split("-")[1])
+                info = retained[chr][transcript_id][exon_junction]
+                junctions[chr][transcript_id][exon1] = [exon2] + info
+
     # now write each of the entries to the output file
     with open(output_file, "w") as outfile:
-        for chr in sorted(retained):
-            for transcript_id in sorted(retained[chr]):
-                for junction_id in sorted(retained[chr][transcript_id]):
-                    coordinates = retained[chr][transcript_id][junction_id][0]
-                    strand = retained[chr][transcript_id][junction_id][1]
-                    output = [chr, coordinates[0], coordinates[1], "{0}.{1}".format(transcript_id, junction_id), ".",  strand]
+        for chr in sorted(junctions):
+            for transcript_id in sorted(junctions[chr]):
+                for exon1 in sorted(junctions[chr][transcript_id]):
+                    info = junctions[chr][transcript_id][exon1]
+                    exon2 = junctions[chr][transcript_id][exon1][0]
+                    coordinates = junctions[chr][transcript_id][exon1][1]
+                    strand = junctions[chr][transcript_id][exon1][2]
+                    output = [chr, coordinates[0], coordinates[1], "{0}.{1}-{2}".format(transcript_id, exon1, exon2), ".",  strand]
                     outfile.write("{0}\n".format("\t".join([str(i) for i in output])))
