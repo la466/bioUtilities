@@ -1,6 +1,6 @@
 import argparse
 
-def parse_arguments(arguments, description = None, floats = [], ints = [], flags = [], opt_flags = []):
+def parse_arguments(arguments, description = None):
     """
     Parse a set of arguments from the command line.
 
@@ -10,15 +10,6 @@ def parse_arguments(arguments, description = None, floats = [], ints = [], flags
         List of arguments that you want to run
     description: str
         If set, a description of the aguments you want to run
-    floats : list
-        List of indices that correspond to the arguments that are floats
-    ints : list
-        List of indices that correspond to the arguments that are integers
-    flags : list
-        List of indices that correspond to the arguments that are flags
-    opt_flags : list
-        List of indices that correspond to the arguments that are optional flags
-        that also take a user defined value
 
     Returns
     ---------
@@ -28,26 +19,21 @@ def parse_arguments(arguments, description = None, floats = [], ints = [], flags
     Examples
     ---------
     >>> from bioUtilities.commands import parse_arguments
-    >>> args = parse_arguments(["arg1", "arg2", 1], ints = [2])
-
-    Credits
-    ---------
-    Rosina Savisaar
+    >>> arguments = arguments = {"arg1": str, "arg2": float, "arg3": int, "arg4": "flag", "arg5": "opt"}
+    >>> args = parse_arguments(arguments)
     """
 
     parser = argparse.ArgumentParser(description = description)
-    for pos, argument in enumerate(arguments):
-        if pos in flags:
+    for argument in arguments:
+        if arguments[argument] == "flag":
             parser.add_argument("--{0}".format(argument), action = "store_true", help = argument)
-        elif pos in opt_flags:
+        elif arguments[argument] == "opt":
             parser.add_argument("-{0}".format(argument), action = "store", dest = "{0}".format(argument))
+        elif arguments[argument] == float:
+            parser.add_argument(argument, type = float, help = argument)
+        elif arguments[argument] == int:
+            parser.add_argument(argument, type = int, help = argument)
         else:
-            if pos in floats:
-                curr_type = float
-            elif pos in ints:
-                curr_type = int
-            else:
-                curr_type = str
-            parser.add_argument(argument, type = curr_type, help = argument)
+            parser.add_argument(argument, type = str, help = argument)
     args = parser.parse_args()
     return args
