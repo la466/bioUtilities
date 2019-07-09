@@ -24,19 +24,19 @@ def run_parallelisation(*args, **kwargs):
         if randomisation:
             np.random.seed()
         for i, item in enumerate(chunk):
-            # print("{0}: {1}/{2}",format(i, len(chunk)))
             kwargs_local = kwargs.copy()
             # if we want to pass the id of the iteration into the function
             if pass_iteration:
-                kwargs_local["iteration"] = item
-
-            output = function_to_run(*args, **kwargs_local)
+                # kwargs_local["iteration"] = item
+                output = function_to_run(item, *args, **kwargs_local)
+            else:
+                output = function_to_run(*args, **kwargs_local)
             outputs.append(output)
     return outputs
 
 
 
-def in_parallel(function_to_run = None, args = None, iteration_list = None, randomisation = None, pass_iteration = None, kwargs = None, parallel = True, workers = None):
+def in_parallel(function_to_run, iteration_list, args = [], randomisation = None, pass_iteration = True, kwargs = None, parallel = True, workers = None):
     """
     A wrapper to run a function in parallel. Tries to give the same output as if
     the function was being run linearly.
@@ -118,13 +118,3 @@ def in_parallel(function_to_run = None, args = None, iteration_list = None, rand
 
         pool.close()
         pool.join()
-
-def local_in_parallel(iteration_list, *args, main_function = None, random_seed = None):
-    output = []
-    if len(iteration_list):
-        np.random.seed()
-
-        for i, iteration in enumerate(iteration_list):
-            main_function(args)
-
-    return output
