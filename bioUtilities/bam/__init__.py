@@ -1,3 +1,4 @@
+from .count_interval_reads import *
 from .mapq_filter import *
 from .nm_filter import *
 from .read_count import *
