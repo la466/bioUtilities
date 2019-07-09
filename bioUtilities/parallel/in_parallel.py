@@ -114,7 +114,5 @@ def in_parallel(function_to_run, iteration_list, args = [], randomisation = None
         for output in outputs:
             results.extend(output.get())
 
-        print(results)
-
         pool.close()
         pool.join()
