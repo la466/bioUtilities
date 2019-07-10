@@ -27,7 +27,7 @@ def count_interval_reads(input_bed, input_bam, output_file, force_strand = False
         run_process(index_args)
 
     # now use bedtools to count the reads
-    args = ["bedtools", "multicov", "-s", "-bams", input_bam, "-bed", input_bed]
+    args = ["bedtools", "multicov", "-s", "-D", "-F", "-bams", input_bam, "-bed", input_bed]
     if not force_strand:
         del args[2]
     run_process(args, file_for_output = output_file)
