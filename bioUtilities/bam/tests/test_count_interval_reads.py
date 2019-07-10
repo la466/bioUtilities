@@ -15,5 +15,5 @@ class TestCountIntervalReads(unittest.TestCase):
         observed = read_many_fields(observed_file)
         expected = read_many_fields(expected_file)
         self.assertEqual(expected, observed)
-        # remove_file(input_bam_index)
-        # remove_file(observed_file)
+        remove_file(input_bam_index)
+        remove_file(observed_file)
