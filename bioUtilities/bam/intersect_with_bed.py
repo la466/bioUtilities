@@ -26,7 +26,6 @@ def intersect_with_bed(input_bam, input_bed, output_file, force_strand = True):
 
     # now use bedtools to count the reads
     args = ["bedtools", "intersect", "-s", "-abam", input_bam, "-b", input_bed]
-    print(" ".join(args))
     if not force_strand:
         del args[2]
     run_process(args, file_for_output = output_file)
