@@ -1,4 +1,5 @@
 from .count_interval_reads import *
+from .intersect_with_bed import *
 from .mapq_filter import *
 from .nm_filter import *
 from .read_count import *
