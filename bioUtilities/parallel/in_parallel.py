@@ -102,7 +102,7 @@ def in_parallel(function_to_run, iteration_list, args = [], randomisation = None
                 kwargs_local["function_to_run"] = function_to_run
                 kwargs_local["chunk"] = chunk
                 kwargs_local["pass_iteration"] = chunk
-                kwargs_local["randomisastion"] = randomisation
+                kwargs_local["randomisation"] = randomisation
 
             else:
                 kwargs_local = {"function_to_run" : function_to_run, "chunk": chunk, "pass_iteration" : pass_iteration, "randomisation" : randomisation}
