@@ -24,6 +24,6 @@ def read_count(input_file):
     >>> 15
     """
 
-    raw_read_count = run_process(["samtools", "view", "-c", filepath])
+    raw_read_count = run_process(["samtools", "view", "-c", input_file])
     read_count = int(re.findall("(\d+)", raw_read_count)[0])
     return read_count
