@@ -18,7 +18,7 @@ def get_exon_junctions(input_bed, output_file, all_exons_file = None):
 
     Examples
     ---------
-    >>> from bioUtilities.splice import get_exon_junctions
+    >>> from bioUtilities.bed import get_exon_junctions
     >>> get_exon_junctions("coding_exons.bed", "exon_junctions.bed", all_exons_file = "all_exons.bed")
     """
 

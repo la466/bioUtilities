@@ -1,4 +1,4 @@
-from bioUtilities.splice import MODULE_DIR, get_exon_junctions
+from bioUtilities.bed import MODULE_DIR, get_exon_junctions
 from bioUtilities.files import read_many_fields, remove_file
 import unittest
 
