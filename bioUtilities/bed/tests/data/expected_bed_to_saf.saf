@@ -1,4 +1,4 @@
-ID	Chr	Start	End	Strand
+GeneID	Chr	Start	End	Strand
 ENST000001	chr1	1000	1001	+
 ENST000002	chr1	1034	1035	+
 ENST000003	chr1	1999	2000	+

@@ -12,7 +12,7 @@ def bed_to_saf(input_file, output_file, header = False, delimiter = "\t"):
     output_file : str
         Path to the output file
     header : bool
-        If true, header present nad ignore
+        If true, header present and ignore
     delimiter : str
         If set, the delimiter for the bed file
 
@@ -28,12 +28,8 @@ def bed_to_saf(input_file, output_file, header = False, delimiter = "\t"):
         entries = entries[1:]
 
     with open(output_file, "w") as outfile:
-        header = ["ID", "Chr", "Start", "End", "Strand"]
-        if len(entries[0]) > 5:
-            header.append("Info")
+        header = ["GeneID", "Chr", "Start", "End", "Strand"]
         outfile.write("{0}\n".format("\t".join(header)))
         for entry in entries:
             output = [entry[3], entry[0], entry[1], entry[2], entry[5]]
-            if len(entry) > 5:
-                output.append(",".join(entry[6:]))
             outfile.write("{0}\n".format("\t".join(output)))
