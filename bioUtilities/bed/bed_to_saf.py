@@ -31,5 +31,5 @@ def bed_to_saf(input_file, output_file, header = False, delimiter = "\t"):
         header = ["GeneID", "Chr", "Start", "End", "Strand"]
         outfile.write("{0}\n".format("\t".join(header)))
         for entry in entries:
-            output = [entry[3], entry[0], entry[1], entry[2], entry[5]]
+            output = [entry[3], entry[0], str(int(entry[1])+1), str(int(entry[2])+1), entry[5]]
             outfile.write("{0}\n".format("\t".join(output)))
