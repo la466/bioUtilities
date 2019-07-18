@@ -43,7 +43,7 @@ def run_process(arguments, return_string = True, input_to_pipe = None, return_er
     """
 
     if not silent:
-        print("Running: {0}".format(" ".join(arguments)))
+        print("Running: {0}".format(" ".join([str(i) for i in arguments])))
 
     if file_for_input:
         input_file = open(file_for_input)
