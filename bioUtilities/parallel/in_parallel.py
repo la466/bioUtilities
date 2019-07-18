@@ -85,7 +85,6 @@ def in_parallel(function_to_run, iteration_list, args = [], randomisation = None
         one_by_one = False
 
         pool = multiprocessing.Pool(workers)
-        print("{0} workers initiated.".format(workers))
         # because this a randomisation, we only want to call the random seed
         # once rather than each time we run the function
         # so first chunk the iteration list between the workers
@@ -95,6 +94,8 @@ def in_parallel(function_to_run, iteration_list, args = [], randomisation = None
         # run and chunk to the arguments
         # the run through the randomisastion parallel function and get the
         # outputs
+
+        print("Multiprocessing: {0} workers available, {1} workers inititated".format(os.cpu_count(), len([i for i in chunk_list if len(i) > 0])))
 
         for chunk in chunk_list:
             if kwargs:
