@@ -1,6 +1,6 @@
 import subprocess
 
-def run_process(arguments, return_string = True, input_to_pipe = None, return_error = False, file_for_input = None, file_for_output = None, universal_newlines = True, shell = False):
+def run_process(arguments, return_string = True, input_to_pipe = None, return_error = False, file_for_input = None, file_for_output = None, universal_newlines = True, shell = False, silent = True):
     """
     Run a command on the command line. Supply command as a list of strings.
 
@@ -22,6 +22,8 @@ def run_process(arguments, return_string = True, input_to_pipe = None, return_er
         If set, think of as text
     shell : bool
         If set, the command will be run through the shell
+    silent : bool
+        If set, the command being run will not be printed
 
     Returns
     ---------
@@ -39,6 +41,9 @@ def run_process(arguments, return_string = True, input_to_pipe = None, return_er
     ---------
     Rosina Savisaar
     """
+
+    if not silent:
+        print("Running: {0}".format(" ".join(arguments)))
 
     if file_for_input:
         input_file = open(file_for_input)
