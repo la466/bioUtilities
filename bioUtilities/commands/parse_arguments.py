@@ -1,6 +1,6 @@
 import argparse
 
-def parse_arguments(arguments, description = None):
+def parse_arguments(arguments, description = None, listed_args = None):
     """
     Parse a set of arguments from the command line.
 
@@ -10,6 +10,8 @@ def parse_arguments(arguments, description = None):
         List of arguments that you want to run
     description: str
         If set, a description of the aguments you want to run
+    listed_args : list, opt
+        If set, a list of arguments given to preserve argument order
 
     Returns
     ---------
@@ -23,8 +25,11 @@ def parse_arguments(arguments, description = None):
     >>> args = parse_arguments(arguments)
     """
 
+    if not listed_args:
+        listed_args = list(arguments)
+
     parser = argparse.ArgumentParser(description = description)
-    for argument in arguments:
+    for argument in listed_args:
         if arguments[argument] == "flag":
             parser.add_argument("--{0}".format(argument), action = "store_true", help = argument)
         elif arguments[argument] == "opt":
