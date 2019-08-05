@@ -4,7 +4,7 @@ from bioUtilities.bed import bed_to_saf
 from bioUtilities.commands import run_process
 from bioUtilities.files import remove_file, read_many_fields
 
-def count_interval_reads(input_file, input_bam, output_file):
+def count_interval_reads(input_file, input_bam, output_file, paired_end = False, min_qual = None, min_length = 50):
     """
     For each interval in bed format, count the number of reads in the bam file
 
@@ -42,7 +42,15 @@ def count_interval_reads(input_file, input_bam, output_file):
 
     # now can use featureCounts to count reads
     # this return the file in 'saf' format
-    args = ["featureCounts", "-fpO", "-F", "SAF", "-g", "ID", "-a", input_file, "-o", temp_output, input_bam]
+    args = ["featureCounts", "-fO", "-F", "SAF", "-g", "ID"]
+    if paired_end:
+        args.append("-p")
+    if min_qual:
+        args.extend(["-Q", min_qual])
+    if min_length:
+        args.extend(["-d", min_length])
+    args.extend(["-a", input_file, "-o", temp_output, input_bam])
+
     run_process(args)
 
     if output_file[-4:] == ".bed":
