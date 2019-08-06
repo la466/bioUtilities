@@ -1,8 +1,9 @@
 import os
+import shutil
 
 from bioUtilities.bed import bed_to_saf
 from bioUtilities.commands import run_process
-from bioUtilities.files import remove_file, read_many_fields
+from bioUtilities.files import remove_file, read_many_fields, get_extension
 
 def count_interval_reads(input_file, input_bam, output_file, paired_end = False, min_qual = None, min_length = 50):
     """
@@ -28,17 +29,23 @@ def count_interval_reads(input_file, input_bam, output_file, paired_end = False,
     >>> count_interval_reads("exon_junctions.bed", "reads.bam", "exon_junction_reads.bed")
     """
 
-    # need to convert to .saf format if in bed format
-    # .saf format its 1-based
-    if input_file[-4:] == ".bed":
-        old_input_file = input_file
-        input_file = "{0}.saf".format(input_file[:-4])
-        bed_to_saf(old_input_file, input_file)
+    # check that featureCounts command exists
+    if not shutil.which('featureCounts'):
+        raise Exception('\nERROR: featureCounts must be installed.\n')
 
-    if output_file[-4:] == ".bed":
-        temp_output = "{0}.saf".format(output_file[:-4])
+    # if input_file is in bed format, need to convert to .saf format
+    # .saf format its 1-based
+    if get_extension(input_file) == ".bed":
+        base_input_file = input_file
+        working_input_file = "{0}.saf".format(input_file[:-4])
+        bed_to_saf(old_input_file, input_file)
     else:
-        temp_output = output_file
+        working_input_file = input_file
+
+    if get_extension(output_file) == ".bed":
+        working_output_file = "{0}.saf".format(output_file[:-4])
+    else:
+        working_output_file = output_file
 
     # now can use featureCounts to count reads
     # this return the file in 'saf' format
@@ -49,19 +56,22 @@ def count_interval_reads(input_file, input_bam, output_file, paired_end = False,
         args.extend(["-Q", min_qual])
     if min_length:
         args.extend(["-d", min_length])
-    args.extend(["-a", input_file, "-o", temp_output, input_bam])
+    args.extend(["-a", working_input_file, "-o", working_output_file, input_bam])
 
+    # now run the count
     run_process(args)
 
-    if output_file[-4:] == ".bed":
-        entries = read_many_fields(temp_output)[2:]
+    # if the output format is bed, convert the saf output to bed
+    if get_extension(output_file) == ".bed":
+        entries = read_many_fields(working_output_file)[2:]
         with open(output_file, "w") as outfile:
             for entry in entries:
                 output = [entry[1], str(int(entry[2])-1), str(int(entry[3])-1), entry[0], ".", entry[4]]
                 output.extend(entry[5:])
                 outfile.write("{0}\n".format("\t".join(output)))
 
-        remove_file(temp_output)
-
-    if old_input_file[-4:] == ".bed":
-        remove_file(input_file)
+    # now clean up the files
+    if working_input_file != input_file:
+        remove_file(working_input_file)
+    if working_output_file != output_file:
+        remove_file(output_file)
