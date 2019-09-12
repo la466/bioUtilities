@@ -55,14 +55,17 @@ def parse_gtf(input_file, features = [], protein_coding = None, gene_ids = None,
             gene_id = re.findall(gene_id_regex, entry_info)[0]
             transcript_id = re.findall(transcript_id_regex, entry_info)[0]
             gene_biotype = re.findall(gene_biotype_regex, entry_info)[0]
-            exon_number = re.findall(exon_regex, entry_info)[0]
         except:
             transcript_id = None
             gene_id = None
             gene_biotype = None
             exon_number = None
 
-        if transcript_id and gene_id and gene_biotype and exon_number:
+        if transcript_id and gene_id and gene_biotype:
+            try:
+                exon_number = re.findall(exon_regex, entry_info)[0]
+            except:
+                exon_number = None
             # if given a list of transcript ids, check whether the entry is in those
             if transcript_ids and transcript_id not in transcript_ids:
                 continue
@@ -83,7 +86,8 @@ def parse_gtf(input_file, features = [], protein_coding = None, gene_ids = None,
             if entry_type not in features:
                 continue
             # create the entry in bed format
-            output = [entry[0], str(int(entry[3])-1), entry[4], "{0}.{1}".format(transcript_id, exon_number), ".", entry[6], gene_id, entry_type]
+            entry_id = "{0}.{1}".format(transcript_id, exon_number) if exon_number else transcript_id
+            output = [entry[0], str(int(entry[3])-1), entry[4], entry_id, ".", entry[6], gene_id, entry_type]
             outputs.append(output)
     # if wanting to write to an output file, do so
     if output_file:
